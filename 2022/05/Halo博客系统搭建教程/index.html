@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Halo博客系统搭建教程 | xiwang's blog</title><meta name="author" content="xiwang"><meta name="copyright" content="xiwang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Halo 官方文档、开源地址、官网  安装jre11 Halo为java项目，需要安装java运行环境 最新的Halo只支持jdk11以上，因此本文安装jdk11  1sudo apt install openjdk-11-jdk   安装完成后检查java版本  1java -version  安装mysql数据库 Halo最低mysql版本要求为5.7+  1sudo apt install">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Halo博客系统搭建教程">
+<meta property="og:url" content="http://gnawix.github.io/2022/05/Halo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="xiwang&#39;s blog">
+<meta property="og:description" content="Halo 官方文档、开源地址、官网  安装jre11 Halo为java项目，需要安装java运行环境 最新的Halo只支持jdk11以上，因此本文安装jdk11  1sudo apt install openjdk-11-jdk   安装完成后检查java版本  1java -version  安装mysql数据库 Halo最低mysql版本要求为5.7+  1sudo apt install">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2022/01/0df81f2f96a3ecb2.png">
+<meta property="article:published_time" content="2022-05-08T12:00:25.000Z">
+<meta property="article:modified_time" content="2022-05-08T12:00:25.000Z">
+<meta property="article:author" content="xiwang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.bmp.ovh/imgs/2022/01/0df81f2f96a3ecb2.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://gnawix.github.io/2022/05/Halo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Halo博客系统搭建教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-08 12:00:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s3.bmp.ovh/imgs/2022/05/07/4f4a788382201409.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.bmp.ovh/imgs/2022/01/0df81f2f96a3ecb2.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">xiwang's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Halo博客系统搭建教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-08T12:00:25.000Z" title="发表于 2022-05-08 12:00:25">2022-05-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-08T12:00:25.000Z" title="更新于 2022-05-08 12:00:25">2022-05-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Halo博客系统搭建教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Halo"><a href="#Halo" class="headerlink" title="Halo"></a>Halo</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.halo.run/">官方文档</a>、<a target="_blank" rel="noopener" href="https://github.com/halo-dev">开源地址</a>、<a target="_blank" rel="noopener" href="https://halo.run/">官网</a></li>
+</ul>
+<h1 id="安装jre11"><a href="#安装jre11" class="headerlink" title="安装jre11"></a>安装jre11</h1><ul>
+<li>Halo为java项目，需要安装java运行环境</li>
+<li>最新的Halo只支持jdk11以上，因此本文安装jdk11</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openjdk-11-jdk</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装完成后检查java版本</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装mysql数据库"><a href="#安装mysql数据库" class="headerlink" title="安装mysql数据库"></a>安装mysql数据库</h1><ul>
+<li>Halo最低mysql版本要求为5.7+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h2><p>启动mysql</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql start</span><br></pre></td></tr></table></figure>
+
+<p>查看mysql运行状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql status</span><br></pre></td></tr></table></figure>
+
+<p>登录mysql</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>创建一个新的mysql用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER &#x27;halo&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123&#x27;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>halo</code>为数据库用户名，<code>%</code>为主机，通常为<code>localhost</code>，而<code>%</code>说明该用户帐户将能够从任何主机进行连接</li>
+</ul>
+<h2 id="创建一个数据库"><a href="#创建一个数据库" class="headerlink" title="创建一个数据库"></a>创建一个数据库</h2><ul>
+<li>要求：<ul>
+<li>字符集(Character Set): <code>utf8mb4</code></li>
+<li>排序规则(Collate): <code>utf8mb4_bin</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database halodb default character set utf8mb4 collate utf8mb4_bin;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>授予数据库用户帐户的所有权限</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;halo&#x27;@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置结束，退出mysql</li>
+</ul>
+<h1 id="安装Halo博客程序"><a href="#安装Halo博客程序" class="headerlink" title="安装Halo博客程序"></a>安装Halo博客程序</h1><ul>
+<li>Halo目录的结构</li>
+</ul>
+<table>
+    <tr>
+        <td rowspan="6">/home/halo/</td>
+        <td rowspan="5">.halo/</td>
+        <td>application.yaml</td>
+    </tr>
+    <tr>
+        <td style="color:red">logs/</td>
+    </tr>
+    <tr>
+        <td style="color:red">static/</td>
+    </tr>
+    <tr>
+        <td style="color:red">templates/</td>
+    </tr>
+    <tr>
+        <td style="color:red">upload/</td>
+    </tr>
+    <tr>
+        <td>app/</td>
+        <td>halo.jar</td>
+    </tr>
+</table>
+
+<ul>
+<li>红色部分是自动生成的，无需自己创建</li>
+<li>halo.jar(主程序)与application.yaml(配置文件)需要我们下载配置</li>
+</ul>
+<h3 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /root</span><br><span class="line">mkdir halo</span><br><span class="line">cd halo</span><br><span class="line">mkdir app</span><br><span class="line">mkdir ./halo</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入app文件夹下载Halo博客程序"><a href="#进入app文件夹下载Halo博客程序" class="headerlink" title="进入app文件夹下载Halo博客程序"></a>进入app文件夹下载Halo博客程序</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd app</span><br><span class="line">wget https://dl.halo.run/release/halo-1.4.5.jar -O halo.jar</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入-halo文件夹下载配置文件"><a href="#进入-halo文件夹下载配置文件" class="headerlink" title="进入.halo文件夹下载配置文件"></a>进入.halo文件夹下载配置文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ../.halo</span><br><span class="line">wget https://dl.halo.run/config/application-template.yaml -O ./application.yaml</span><br></pre></td></tr></table></figure>
+
+<h3 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8090</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Response data gzip.</span></span><br><span class="line">  <span class="attr">compression:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># H2 database configuration.</span></span><br><span class="line"><span class="comment">#    driver-class-name: org.h2.Driver</span></span><br><span class="line"><span class="comment">#    url: jdbc:h2:file:~/.halo/db/halo</span></span><br><span class="line"><span class="comment">#    username: admin</span></span><br><span class="line"><span class="comment">#    password: 123456</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># MySQL database configuration.</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://127.0.0.1:3306/halodb?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;allowPublicKeyRetrieval=true</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># H2 database console configuration.</span></span><br><span class="line"><span class="comment">#  h2:</span></span><br><span class="line"><span class="comment">#   console:</span></span><br><span class="line"><span class="comment">#      settings:</span></span><br><span class="line"><span class="comment">#        web-allow-others: false</span></span><br><span class="line"><span class="comment">#      path: /h2-console</span></span><br><span class="line"><span class="comment">#      enabled: false</span></span><br><span class="line"></span><br><span class="line"><span class="attr">halo:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Your admin client path is https://your-domain/&#123;admin-path&#125;</span></span><br><span class="line">  <span class="attr">admin-path:</span> <span class="string">admin</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># memory or level</span></span><br><span class="line">  <span class="attr">cache:</span> <span class="string">memory</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将H2数据库部分注释掉，mysql的注释部分删除</li>
+</ul>
+<p>最终配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8090</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Response data gzip.</span></span><br><span class="line">  <span class="attr">compression:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># MySQL database configuration.</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://127.0.0.1:3306/halodb?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;allowPublicKeyRetrieval=true</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line"></span><br><span class="line"><span class="attr">halo:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Your admin client path is https://your-domain/&#123;admin-path&#125;</span></span><br><span class="line">  <span class="attr">admin-path:</span> <span class="string">admin</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># memory or level</span></span><br><span class="line">  <span class="attr">cache:</span> <span class="string">memory</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="测试运行"><a href="#测试运行" class="headerlink" title="测试运行"></a>测试运行</h1><p>进入app文件夹运行halo.jar</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar halo.jar</span><br></pre></td></tr></table></figure>
+
+<p>打开<code>http://ip:port</code>进入安装界面</p>
+<h1 id="完结撒花"><a href="#完结撒花" class="headerlink" title="完结撒花"></a>完结撒花</h1></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://Gnawix.github.io">xiwang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://gnawix.github.io/2022/05/Halo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">http://gnawix.github.io/2022/05/Halo博客系统搭建教程/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://Gnawix.github.io" target="_blank">xiwang's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.bmp.ovh/imgs/2022/01/0df81f2f96a3ecb2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/GithubActions%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2Hexo/"><img class="prev-cover" src="https://i.bmp.ovh/imgs/2022/05/08/1bf8a5b458cb7474.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">使用Github Actions自动部署Hexo</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/wsl2%E5%AE%89%E8%A3%85archlinux/"><img class="next-cover" src="https://i.bmp.ovh/imgs/2022/01/8ae6f54372ab4c43.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">wsl2安装archlinux</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s3.bmp.ovh/imgs/2022/05/07/4f4a788382201409.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">xiwang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Gnawix"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Gnawix" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xiwang566@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Halo"><span class="toc-number">1.</span> <span class="toc-text">Halo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85jre11"><span class="toc-number">2.</span> <span class="toc-text">安装jre11</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mysql%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text">安装mysql数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.1.</span> <span class="toc-text">配置数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.2.</span> <span class="toc-text">创建一个数据库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Halo%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text">安装Halo博客程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">4.0.1.</span> <span class="toc-text">创建文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5app%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E8%BD%BDHalo%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F"><span class="toc-number">4.0.2.</span> <span class="toc-text">进入app文件夹下载Halo博客程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5-halo%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">4.0.3.</span> <span class="toc-text">进入.halo文件夹下载配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">4.0.4.</span> <span class="toc-text">编辑配置文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C"><span class="toc-number">5.</span> <span class="toc-text">测试运行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%8C%E7%BB%93%E6%92%92%E8%8A%B1"><span class="toc-number">6.</span> <span class="toc-text">完结撒花</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/Spring/" title="Spring 部分八股"><img src="https://ftp.bmp.ovh/imgs/2020/07/a0f475a397aa9f54.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring 部分八股"/></a><div class="content"><a class="title" href="/2022/07/Spring/" title="Spring 部分八股">Spring 部分八股</a><time datetime="2022-07-12T11:22:46.000Z" title="发表于 2022-07-12 11:22:46">2022-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/%E6%9C%80%E5%B0%8F%E6%A0%88/" title="最小栈"><img src="https://s3.bmp.ovh/imgs/2022/01/dc03c3e533447b74.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="最小栈"/></a><div class="content"><a class="title" href="/2022/05/%E6%9C%80%E5%B0%8F%E6%A0%88/" title="最小栈">最小栈</a><time datetime="2022-05-28T19:09:01.000Z" title="发表于 2022-05-28 19:09:01">2022-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/xdb%E6%89%8B%E5%86%99%E6%95%B0%E6%8D%AE%E5%BA%93/" title="xdb手写数据库"><img src="https://s3.bmp.ovh/imgs/2022/01/dc03c3e533447b74.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="xdb手写数据库"/></a><div class="content"><a class="title" href="/2022/05/xdb%E6%89%8B%E5%86%99%E6%95%B0%E6%8D%AE%E5%BA%93/" title="xdb手写数据库">xdb手写数据库</a><time datetime="2022-05-09T21:17:43.000Z" title="发表于 2022-05-09 21:17:43">2022-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97-%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8/" title="表达式计算-简单计算器"><img src="https://s3.bmp.ovh/imgs/2022/01/dc03c3e533447b74.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="表达式计算-简单计算器"/></a><div class="content"><a class="title" href="/2022/05/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97-%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8/" title="表达式计算-简单计算器">表达式计算-简单计算器</a><time datetime="2022-05-09T18:00:41.000Z" title="发表于 2022-05-09 18:00:41">2022-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/TOP100/" title="Leetcode HOT 100"><img src="https://ftp.bmp.ovh/imgs/2020/07/a0f475a397aa9f54.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode HOT 100"/></a><div class="content"><a class="title" href="/2022/05/TOP100/" title="Leetcode HOT 100">Leetcode HOT 100</a><time datetime="2022-05-08T22:39:25.000Z" title="发表于 2022-05-08 22:39:25">2022-05-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By xiwang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><p id="hitokoto" align="center" style="color:white"><a href="#" id="hitokoto_text">隐约雷鸣 阴霾天空 但盼风雨来 能留你在此</a></p> <script src="https://v1.hitokoto.cn/?c=j&encode=js&select=%23hitokoto" defer> </script></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

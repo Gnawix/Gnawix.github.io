@@ -1,0 +1,418 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Leetcode HOT 100 | xiwang's blog</title><meta name="keywords" content="刷题,算法,Leetcode"><meta name="author" content="xiwang"><meta name="copyright" content="xiwang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="1. 两数之和 使用hashmap，记录值和下标，值重复时返回结果  &#x3D;&#x3D;map中添加nums[i]，则比较时比target-nums[i]&#x3D;&#x3D; 2. 两数相加 新建一个节点链表来保存结果，两个链表长度不一样，每次循环开始都判空则用0替代  &#x3D;&#x3D;最后循环结束后还要判断进位值是否是1而再添加一个值为1的节点&#x3D;&#x3D; 3. 无">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode HOT 100">
+<meta property="og:url" content="http://gnawix.github.io/2022/05/TOP100/index.html">
+<meta property="og:site_name" content="xiwang&#39;s blog">
+<meta property="og:description" content="1. 两数之和 使用hashmap，记录值和下标，值重复时返回结果  &#x3D;&#x3D;map中添加nums[i]，则比较时比target-nums[i]&#x3D;&#x3D; 2. 两数相加 新建一个节点链表来保存结果，两个链表长度不一样，每次循环开始都判空则用0替代  &#x3D;&#x3D;最后循环结束后还要判断进位值是否是1而再添加一个值为1的节点&#x3D;&#x3D; 3. 无">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2020/07/a0f475a397aa9f54.jpg">
+<meta property="article:published_time" content="2022-05-08T22:39:25.000Z">
+<meta property="article:modified_time" content="2022-05-09T03:57:36.000Z">
+<meta property="article:author" content="xiwang">
+<meta property="article:tag" content="刷题">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="Leetcode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ftp.bmp.ovh/imgs/2020/07/a0f475a397aa9f54.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://gnawix.github.io/2022/05/TOP100/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Leetcode HOT 100',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-09 03:57:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s3.bmp.ovh/imgs/2022/05/07/4f4a788382201409.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://ftp.bmp.ovh/imgs/2020/07/a0f475a397aa9f54.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">xiwang's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Leetcode HOT 100</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-08T22:39:25.000Z" title="发表于 2022-05-08 22:39:25">2022-05-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-09T03:57:36.000Z" title="更新于 2022-05-09 03:57:36">2022-05-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Leetcode HOT 100"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/two-sum/">1. 两数之和</a></h1><blockquote>
+<p>使用hashmap，记录值和下标，值重复时返回结果</p>
+</blockquote>
+<p>&#x3D;&#x3D;map中添加nums[i]，则比较时比target-nums[i]&#x3D;&#x3D;</p>
+<h1 id="2-两数相加"><a href="#2-两数相加" class="headerlink" title="2. 两数相加"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/add-two-numbers/">2. 两数相加</a></h1><blockquote>
+<p>新建一个节点链表来保存结果，两个链表长度不一样，每次循环开始都判空则用0替代</p>
+</blockquote>
+<p>&#x3D;&#x3D;最后循环结束后还要判断进位值是否是1而再添加一个值为1的节点&#x3D;&#x3D;</p>
+<h1 id="3-无重复字符的最长子串"><a href="#3-无重复字符的最长子串" class="headerlink" title="3. 无重复字符的最长子串"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/">3. 无重复字符的最长子串</a></h1><blockquote>
+<p>使用HashSet，for循环left指针，循环体内while循环right指针add到set中，遇到重复则结束while，在计算max值并remove出left下标的值</p>
+</blockquote>
+<p>&#x3D;&#x3D;外层for循环循环left指针，内层while循环right指针，内层循环时要先判断right是否越界&#x3D;&#x3D;</p>
+<h1 id="4-寻找两个正序数组的中位数"><a href="#4-寻找两个正序数组的中位数" class="headerlink" title="4. 寻找两个正序数组的中位数"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/">4. 寻找两个正序数组的中位数</a></h1><blockquote>
+<p>1.合并，找位置 O(m+n) O(m+n)</p>
+<p>2.不合并，找位置 O(m+n) O(1)</p>
+<p>2.二分法 <em>O</em>(log(<em>m</em>+<em>n</em>)) O(1)</p>
+</blockquote>
+<blockquote>
+<p>二分法把问题转化为找第k小的数</p>
+<p>在nums1和nums2中各取k&#x2F;2，较小的k&#x2F;2的那一个数组中k&#x2F;2之前的元素一定都不是要找的第k个元素，故将那个数组中的前k&#x2F;2个元素删去，此时由于少了k&#x2F;2个元素，问题又变成找寻第k-k&#x2F;2小的元素，一直循环重复，直到问题化为找第一小的元素时，返回较小的那一个元素即可</p>
+</blockquote>
+<p>&#x3D;&#x3D;二分法注意边界问题，当其中一个数组整个数组都不符合条件时，直接返回另一个数组的第k (<strong>注意k是在一直变化的</strong>) 个元素，或者是当k&#x3D;1的时候返回较小的数即可&#x3D;&#x3D;</p>
+<h1 id="5-最长回文子串"><a href="#5-最长回文子串" class="headerlink" title="5. 最长回文子串"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-palindromic-substring/">5. 最长回文子串</a></h1><blockquote>
+<p>动态规划</p>
+<p>i&#x3D;&#x3D;j            dp[i][j] &#x3D; true</p>
+<p>i=&#x3D;j+1       dp[i][j] &#x3D; s[i]&#x3D;&#x3D;s[j]</p>
+<p>else           dp[i][j] &#x3D; dp[i+1][j-1] &amp;&amp; s[i]&#x3D;&#x3D;s[j]</p>
+</blockquote>
+<p>&#x3D;&#x3D;注意，遍历时应去遍历长度L，在通过i+L-1得出右边界j，因为该题动态规划的转移方程是由内向外转移的，必须先知道内层的值才能推出外层的值，如果直接遍历i,j的话就无法先获得内层的值，从而错误&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;另外遍历也可以不用遍历长度L，可以right从0到len，left从0到right遍历，长度就等于right-left+1&#x3D;&#x3D;</p>
+<h1 id="10-正则表达式匹配"><a href="#10-正则表达式匹配" class="headerlink" title="10. 正则表达式匹配"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/regular-expression-matching/">10. 正则表达式匹配</a></h1><blockquote>
+<p>难</p>
+</blockquote>
+<p><img src="C:\Users\Gnawix\AppData\Roaming\Typora\typora-user-images\image-20220327203841866.png" alt="image-20220327203841866"></p>
+<p> <img src="https://cdn.jsdelivr.net/gh/Gnawix/Picture/img/image-20220327203934525.png" alt="image-20220327203934525"></p>
+<h1 id="11-盛最多水的容器"><a href="#11-盛最多水的容器" class="headerlink" title="11. 盛最多水的容器"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/container-with-most-water/">11. 盛最多水的容器</a></h1><blockquote>
+<p>两端双指针，每次移动高度较小的指针</p>
+</blockquote>
+<h1 id="15-三数之和"><a href="#15-三数之和" class="headerlink" title="15. 三数之和"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/3sum/">15. 三数之和</a></h1><blockquote>
+<p>双指针 left right</p>
+<p>先排序</p>
+<p>遍历i从0开始，left从左向右，right从右向左，由于拍过序，小于则移动left，大于移动right</p>
+</blockquote>
+<p>&#x3D;&#x3D;注意：去重时i应该与前面i-1比，而left和right则是与left+1和right-1比。因为如果i向前比的话i就会从i到i+1，而这样的话left则会少了一次等于i+1的机会，因此i应该与i-1比。left向后比是因为若left向前比的话可能与i重合&#x3D;&#x3D;</p>
+<h1 id="17-电话号码的字母组合"><a href="#17-电话号码的字母组合" class="headerlink" title="17. 电话号码的字母组合"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/">17. 电话号码的字母组合</a></h1><blockquote>
+<p>回溯法</p>
+</blockquote>
+<h1 id="19-删除链表的倒数第-N-个结点"><a href="#19-删除链表的倒数第-N-个结点" class="headerlink" title="19. 删除链表的倒数第 N 个结点"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/">19. 删除链表的倒数第 N 个结点</a></h1><blockquote>
+<p>快慢指针，快指针先走n步，然后慢指针开始出发，快慢指针同时前进，快指针到头时慢指针的位置即为结果（或者用栈）</p>
+</blockquote>
+<h1 id="20-有效的括号"><a href="#20-有效的括号" class="headerlink" title="20. 有效的括号"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-parentheses/">20. 有效的括号</a></h1><blockquote>
+<p>栈 简单</p>
+</blockquote>
+<h1 id="21-合并两个有序链表"><a href="#21-合并两个有序链表" class="headerlink" title="21. 合并两个有序链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-two-sorted-lists/">21. 合并两个有序链表</a></h1><blockquote>
+<p>迭代 、简单    递归玄学</p>
+</blockquote>
+<h1 id="22-括号生成"><a href="#22-括号生成" class="headerlink" title="22. 括号生成"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/generate-parentheses/">22. 括号生成</a></h1><h1 id="23-合并K个升序链表"><a href="#23-合并K个升序链表" class="headerlink" title="23. 合并K个升序链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-k-sorted-lists/">23. 合并K个升序链表</a></h1><blockquote>
+<p>方法一：两两合并，使用合并两个升序链表的方法循环合并res和lists[i]</p>
+<p>方法二：分治法，也是两两合并</p>
+<p>方法三：优先队列，循环，把每个头结点加入queue，弹出的节点为最小节点，再将该节点的next节点add到queue</p>
+</blockquote>
+<p>&#x3D;&#x3D;注意分治法分割的时候边界为mid与mid+1&#x3D;&#x3D;</p>
+<h1 id="31-下一个排列"><a href="#31-下一个排列" class="headerlink" title="31. 下一个排列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/next-permutation/">31. 下一个排列</a></h1><blockquote>
+<p>1.先找出最大的索引 k 满足 nums[k] &lt; nums[k+1]，如果不存在，就翻转整个数组；<br>2.再找出另一个最大索引 l 满足 nums[l] &gt; nums[k]；<br>3.交换 nums[l] 和 nums[k]；<br>4.最后翻转 nums[k+1:]。</p>
+</blockquote>
+<h1 id="32-最长有效括号"><a href="#32-最长有效括号" class="headerlink" title="32. 最长有效括号"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-valid-parentheses/">32. 最长有效括号</a></h1><blockquote>
+<p>难</p>
+</blockquote>
+<h1 id="33-搜索旋转排序数组"><a href="#33-搜索旋转排序数组" class="headerlink" title="33. 搜索旋转排序数组"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/">33. 搜索旋转排序数组</a></h1><blockquote>
+<p>方法一：先遍历找到k点的位置，k分为左右两个有序数组，判断target在哪边并使用二分法查找</p>
+<p>方法二：直接把数组分为两部分，则必有一部分是有序的，判断left，mid，right坐标的值的大小来得出哪边是有序的，再判断target是在有序还是在无序的部分里，从而更新left或right的值，本质还是二分法</p>
+</blockquote>
+<h1 id="34-在排序数组中查找元素的第一个和最后一个位置"><a href="#34-在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="34. 在排序数组中查找元素的第一个和最后一个位置"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/">34. 在排序数组中查找元素的第一个和最后一个位置</a></h1><blockquote>
+<p>二分法找到第一个位置，再用二分法找到第二个位置或者从第一个位置开始向后遍历</p>
+</blockquote>
+<h1 id="39-组合总和"><a href="#39-组合总和" class="headerlink" title="39. 组合总和"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/combination-sum/">39. 组合总和</a></h1><blockquote>
+<p>回溯法</p>
+</blockquote>
+<p>&#x3D;&#x3D;为了方便剪枝，先排序，在回溯过程中遇到sum&gt;target直接break即可&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;元素可以重复选取，所以回溯的index为i&#x3D;&#x3D;</p>
+<h1 id="42-接雨水"><a href="#42-接雨水" class="headerlink" title="42. 接雨水"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/trapping-rain-water/">42. 接雨水</a></h1><blockquote>
+<p>某根柱子能接住的雨水高度为这跟柱子之前最大柱子与之后的最大柱子中的较小的一个减去当前柱子高度</p>
+<p>动态规划</p>
+<p>求i之前的最大，求i之后的最大，取较小值减去nums[i]，求和</p>
+</blockquote>
+<p>&#x3D;&#x3D;可以动态规划用两个函数求出dpLeft[]和dpRight[]，再循环遍历&#x3D;&#x3D;</p>
+<h1 id="46-全排列"><a href="#46-全排列" class="headerlink" title="46. 全排列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/permutations/">46. 全排列</a></h1><blockquote>
+<p>回溯</p>
+</blockquote>
+<p>&#x3D;&#x3D;注意一个树枝上用过的元素不再使用，可以使用used数组标记或者使用path.contains()&#x3D;&#x3D;</p>
+<h1 id="48-旋转图像"><a href="#48-旋转图像" class="headerlink" title="48. 旋转图像"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/rotate-image/">48. 旋转图像</a></h1><blockquote>
+<p>方法一：使用额外一个数组存储旋转的结果，再用两层循环将原数组的值改为翻转后数组的值</p>
+<p>方法二：先上下翻转，再沿对角线翻转(转置)</p>
+</blockquote>
+<p>&#x3D;&#x3D;使用额外的数组的时候应new int一个空的，不能直接等于原数组或者使用clone方法，因为这样的结果都是新建的一个引用，实际引用的对象还是一个数组&#x3D;&#x3D;</p>
+<h1 id="49-字母异位词分组"><a href="#49-字母异位词分组" class="headerlink" title="49. 字母异位词分组"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/group-anagrams/">49. 字母异位词分组</a></h1><blockquote>
+<p>使用map将排序的str当做键，未排序的str集合list作value</p>
+</blockquote>
+<h1 id="53-最大子数组和"><a href="#53-最大子数组和" class="headerlink" title="53. 最大子数组和"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-subarray/">53. 最大子数组和</a></h1><blockquote>
+<p>动态规划 dp[i] &#x3D; Math.max(dp[i-1]+nums[i], nums[i])</p>
+<p>也可以写为 sum &#x3D; Math.max(sum+nums[i], nums[i]);   maxSum &#x3D; Math.max(maxSum, sum)</p>
+</blockquote>
+<h1 id="55-跳跃游戏"><a href="#55-跳跃游戏" class="headerlink" title="55. 跳跃游戏"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/jump-game/">55. 跳跃游戏</a></h1><blockquote>
+<p>动态规划（慢） O(n*n)</p>
+<p>贪心O(n)：每次只维护最远能到达的距离</p>
+</blockquote>
+<h1 id="56-合并区间"><a href="#56-合并区间" class="headerlink" title="56. 合并区间"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-intervals/">56. 合并区间</a></h1><blockquote>
+<p>先根据每个数组中的第一个值排序Arrays.sort(nums, (o1,o2)-&gt;o1[0]-o2[0])，再依次判断并两两合并</p>
+</blockquote>
+<h1 id="62-不同路径"><a href="#62-不同路径" class="headerlink" title="62. 不同路径"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/unique-paths/">62. 不同路径</a></h1><blockquote>
+<p>排列组合：一共要走m+n-2步，其中要向下走m-1步，所以res&#x3D;C(m-1)(m+n-2)</p>
+<p>动态规划：某个点只能是从上面或左边过来的dp[i][j]&#x3D;dp[i-1][j]+dp[i][j-1]</p>
+</blockquote>
+<p>&#x3D;&#x3D;动态规划空间优化：dp[j]=dp[j]+dp[j-1]&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;dp[j]表示到当前行、j坐标的路径数，每次只需维护上一行的dp即可，本行的dp根据上一行的dp来更新，dp[j]=dp[j]+dp[j-1]中的左边的dp为当前坐标的dp，右边的dp[j]为上一行j坐标(上面)的dp值(此时dp还未更新，停留在上一行)，dp[i-1]为当前行j-1坐标(左边)的dp值(在上一次已经从上一行更新到了本行)&#x3D;&#x3D;</p>
+<h1 id="64-最小路径和"><a href="#64-最小路径和" class="headerlink" title="64. 最小路径和"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-path-sum/">64. 最小路径和</a></h1><blockquote>
+<p>动态规划，同62</p>
+<p>快速矩阵幂</p>
+</blockquote>
+<p>&#x3D;&#x3D;注意优化为一维dp数组时，每次循环i时都要更新dp[0] &#x3D; dp[0] + grid[i][0]，或者专门用一个数组记录第一列的dp值，dp[i-1]会用到&#x3D;&#x3D;</p>
+<h1 id="70-爬楼梯"><a href="#70-爬楼梯" class="headerlink" title="70. 爬楼梯"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/">70. 爬楼梯</a></h1><blockquote>
+<p>斐波那契数列</p>
+<p>经典动态规划</p>
+<p>矩阵快速幂</p>
+<p>数学公式</p>
+</blockquote>
+<h1 id="72-编辑距离"><a href="#72-编辑距离" class="headerlink" title="72. 编辑距离"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/edit-distance/">72. 编辑距离</a></h1><blockquote>
+<p>动态规划</p>
+<p>详细如下</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">(一)、当word1[i]==word2[j]时,由于遍历到了i和j,说明word1的0~i-1和word2的0~j-1的匹配结果已经生成,</span><br><span class="line">由于当前两个字符相同,因此无需做任何操作,dp[i][j]=dp[i-1][j-1]</span><br><span class="line">(二)、当word1[i]!=word2[j]时,可以进行的操作有3个:</span><br><span class="line">      ①替换操作:可能word1的0~i-1位置与word2的0~j-1位置的字符都相同,</span><br><span class="line">           只是当前位置的字符不匹配,进行替换操作后两者变得相同,</span><br><span class="line">           所以此时dp[i][j]=dp[i-1][j-1]+1(这个加1代表执行替换操作)</span><br><span class="line">      ②删除操作:若此时word1的0~i-1位置与word2的0~j位置已经匹配了,</span><br><span class="line">         此时多出了word1的i位置字符,应把它删除掉,才能使此时word1的0~i(这个i是执行了删除操作后新的i)</span><br><span class="line">         和word2的0~j位置匹配,因此此时dp[i][j]=dp[i-1][j]+1(这个加1代表执行删除操作)</span><br><span class="line">      ③插入操作:若此时word1的0~i位置只是和word2的0~j-1位置匹配,</span><br><span class="line">          此时只需要在原来的i位置后面插入一个和word2的j位置相同的字符使得</span><br><span class="line">          此时的word1的0~i(这个i是执行了插入操作后新的i)和word2的0~j匹配得上,</span><br><span class="line">          所以此时dp[i][j]=dp[i][j-1]+1(这个加1代表执行插入操作)</span><br><span class="line">      ④由于题目所要求的是要最少的操作数:所以当word1[i] != word2[j] 时,</span><br><span class="line">          需要在这三个操作中选取一个最小的值赋格当前的dp[i][j]</span><br><span class="line">(三)总结:状态方程为:</span><br><span class="line">if(word1[i] == word2[j]):</span><br><span class="line">      dp[i][j] = dp[i-1][j-1]</span><br><span class="line">else:</span><br><span class="line">       min(dp[i-1][j-1],dp[i-1][j],dp[i][j-1])+1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PS:大佬的代码中word1.charAt(i-1)==word2.charAt(j-1)的原因是:</span><br><span class="line">     初始化DP Table时dp[i][0]和dp[0][j]已经填写完成,所以接下来填表需要从1开始,</span><br><span class="line">     但是字符的比较需要从0开始,因此才这样子写</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="75-颜色分类"><a href="#75-颜色分类" class="headerlink" title="75. 颜色分类"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sort-colors/">75. 颜色分类</a></h1><blockquote>
+<p>方法一：直接排序</p>
+<p>方法二：双指针，把0挪到左边，2挪到右边</p>
+</blockquote>
+<h1 id="76-最小覆盖子串"><a href="#76-最小覆盖子串" class="headerlink" title="76. 最小覆盖子串"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-window-substring/">76. 最小覆盖子串</a></h1><blockquote>
+<p>滑动窗口：可以维护两个map分别记录s和t的字母，并用一个count记录字母种类数，当count&#x3D;&#x3D;map.size()</p>
+</blockquote>
+<h1 id="78-子集"><a href="#78-子集" class="headerlink" title="78. 子集"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/subsets/">78. 子集</a></h1><blockquote>
+<p>回溯法</p>
+</blockquote>
+<h1 id="79-单词搜索"><a href="#79-单词搜索" class="headerlink" title="79. 单词搜索"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/word-search/">79. 单词搜索</a></h1><blockquote>
+<p>回溯，向上下左右四个方向搜索并回溯</p>
+</blockquote>
+<p>&#x3D;&#x3D;搜索时注意越界和被搜索到的节点是否使用过，使用used数组做标记&#x3D;&#x3D;</p>
+<h1 id="84-柱状图中最大的矩形"><a href="#84-柱状图中最大的矩形" class="headerlink" title="84. 柱状图中最大的矩形"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/">84. 柱状图中最大的矩形</a></h1><blockquote>
+<p>暴力解法思路：遍历每个柱子，然后从该柱子向左右蔓延，找到该柱子高度所对应的最大的面积。求最大。</p>
+<p>思路：找每个柱子所对应高度的最大面积，该面积的长应为该柱子的高度，宽为该柱子两侧分别第一个小于该柱子高度的柱子的下标的差值。所一每个柱子高度所对应的最大面积为柱子右面第一个小于该柱子高度的下标减去左边第一个小于该柱子高度的下标再乘以该柱子的高度。</p>
+<p>思路二：单调栈，构造一个单调递增的栈，遇到递减即为找到了栈顶元素左右的第一小的值，求出宽度即可求面积</p>
+</blockquote>
+<p>&#x3D;&#x3D;注意单调栈中存放的是下标而不是值，因为宽度需要用下标相减来计算&#x3D;&#x3D;</p>
+<h1 id="94-二叉树的中序遍历"><a href="#94-二叉树的中序遍历" class="headerlink" title="94. 二叉树的中序遍历"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/">94. 二叉树的中序遍历</a></h1><blockquote>
+<p>递归、栈迭代</p>
+<p>Morris遍历：本质上是找到当前节点的前驱节点，把前驱节点的right指针指向该节点，遍历时一直遍历right指针即可（空间复杂度降为O(1)）</p>
+<p>找前驱节点：root：先到root.left，再一直向右遍历到底即为前驱节点</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(root != <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(root.left != <span class="literal">null</span>)&#123;</span><br><span class="line">        predecessor = root.left;</span><br><span class="line">        <span class="keyword">while</span>(predecessor.right != <span class="literal">null</span> &amp;&amp; predecessor.right != root)&#123;</span><br><span class="line">            predecessor = predecessor.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(predecessor.right == <span class="literal">null</span>)&#123;</span><br><span class="line">            predecessor.right = root;</span><br><span class="line">            root = root.left;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.add(root.val);</span><br><span class="line">            <span class="comment">//前驱节点右节点置空，不破坏树结构，不置空应该也对</span></span><br><span class="line">            predecessor.right = <span class="literal">null</span>;</span><br><span class="line">            root = root.right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        root = root.right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="96-不同的二叉搜索树"><a href="#96-不同的二叉搜索树" class="headerlink" title="96. 不同的二叉搜索树"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/unique-binary-search-trees/">96. 不同的二叉搜索树</a></h1><blockquote>
+<p>动态规划：以第i个节点，左子树有i-1个节点，右子树有n-i个节点，故以i为根的二叉搜索树有g(i-1)*g(n-i)</p>
+<p>i从1到n遍历求和即的结果</p>
+<p>递归：count +&#x3D; numTrees[i-1] * numTrees[n-1]; return count;</p>
+<p>递归优化：可能左子树有2个节点已经计算过numTrees(2)的值，当遇到右子树也有2个节点时便会重复计算，耗时，改进方法：每次把numTrees(n)的结果放到一个map中，下次先判断map中是否包含，包含了就直接返回，否则再计算</p>
+</blockquote>
+<h1 id="98-验证二叉搜索树"><a href="#98-验证二叉搜索树" class="headerlink" title="98. 验证二叉搜索树"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/validate-binary-search-tree/">98. 验证二叉搜索树</a></h1><blockquote>
+<p>递归：isValidBST(TreeNode root, long lower, long upper)</p>
+<p>中序遍历，遇到小于上一个数则返回false</p>
+</blockquote>
+<h1 id="101-对称二叉树"><a href="#101-对称二叉树" class="headerlink" title="101. 对称二叉树"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/symmetric-tree/">101. 对称二叉树</a></h1><blockquote>
+<p>递归：递归左右节点，不符合则false，再递归内层、外层，与操作返回</p>
+<p>迭代：借助队列，每次进两个节点，出两个节点，不对称则返回</p>
+</blockquote>
+<h1 id="102-二叉树的层序遍历"><a href="#102-二叉树的层序遍历" class="headerlink" title="102. 二叉树的层序遍历"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/">102. 二叉树的层序遍历</a></h1><blockquote>
+<p>借助队列迭代 BFS</p>
+</blockquote>
+<h1 id="104-二叉树的最大深度"><a href="#104-二叉树的最大深度" class="headerlink" title="104. 二叉树的最大深度"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/">104. 二叉树的最大深度</a></h1><blockquote>
+<p>递归 return Math.max(root.left, root.right)+1;</p>
+<p>迭代，层序遍历，记录层数</p>
+</blockquote>
+<h1 id="105-从前序与中序遍历序列构造二叉树"><a href="#105-从前序与中序遍历序列构造二叉树" class="headerlink" title="105. 从前序与中序遍历序列构造二叉树"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">105. 从前序与中序遍历序列构造二叉树</a></h1><blockquote>
+<p>递归，先找前序遍历的第一个节点在中序遍历中的位置index，在中序遍历中index左边的为左子树，右边的为右子树，对应到前序遍历中第一个节点后的 index左边的节点数量 的节点为左子树节点，再往后为右子树节点，每次遍历时额外维护前序序列中左(右)子树的起始位置preLeft和结束位置preRight，还需维护该子树在中序序列中的起始inLeft与结束inRight位置，另外还需维护一个map以便于更快的查找出前序遍历的根节点在中序遍历中的下表位置，否则每次查找都需要遍历。</p>
+</blockquote>
+<h1 id="114-二叉树展开为链表"><a href="#114-二叉树展开为链表" class="headerlink" title="114. 二叉树展开为链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/">114. 二叉树展开为链表</a></h1><blockquote>
+<p>使用递归或迭代先遍历二叉树并存在list中，再连接成链表</p>
+<p>或者在遍历的过程中链接（只适用于迭代实现）</p>
+<p>寻找前驱节点（当前节点左子树的最右节点指向当前节点的右孩子）</p>
+</blockquote>
+<h1 id="121-买卖股票的最佳时机"><a href="#121-买卖股票的最佳时机" class="headerlink" title="121. 买卖股票的最佳时机"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/">121. 买卖股票的最佳时机</a></h1><blockquote>
+<p>贪心，每次记录当前最小，求当前最大 </p>
+<p>min &#x3D; Math.min(min, prices[i]);  max &#x3D; Math.max(max, prices[i]-min);</p>
+</blockquote>
+<h1 id="124-二叉树中的最大路径和"><a href="#124-二叉树中的最大路径和" class="headerlink" title="124. 二叉树中的最大路径和"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/">124. 二叉树中的最大路径和</a></h1><blockquote>
+<p>递归：每次递归出左子树最大贡献值和右子树最大贡献值，max为左子树最大贡献加上右子树最大贡献值加上当前节点的值</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getMax</span><span class="params">(TreeNode root)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> Math.max(<span class="number">0</span>, getMax(root.left));</span><br><span class="line">    <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> Math.max(<span class="number">0</span>, getMax(root.right));</span><br><span class="line">    res = Math.max(res, root.val+left+right);</span><br><span class="line">    <span class="keyword">return</span> Math.max(left, right) + root.val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="128-最长连续序列"><a href="#128-最长连续序列" class="headerlink" title="128. 最长连续序列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-consecutive-sequence/">128. 最长连续序列</a></h1><blockquote>
+<p>排序后双指针</p>
+<p>全部放进一个set里，循环判断num++是否在set里（需要确定num是最小值才能得到最大count，因此先判断num-1是否在count，若不在则说明num是最小的，在循环判断num++）</p>
+</blockquote>
+<h1 id="136-只出现一次的数字"><a href="#136-只出现一次的数字" class="headerlink" title="136. 只出现一次的数字"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/single-number/">136. 只出现一次的数字</a></h1><blockquote>
+<p>全部异或，结果即为所求</p>
+<p>使用hashmap，或使用list，无则+1，有则-1，所剩即所得</p>
+</blockquote>
+<h1 id="139-单词拆分"><a href="#139-单词拆分" class="headerlink" title="139. 单词拆分"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/word-break/">139. 单词拆分</a></h1><blockquote>
+<p>动态规划：dp[i]为s的前i个所组成的词在字典里，dp[i] &#x3D; dp[j] &amp;&amp; contains(s.substring(j,i))</p>
+<p>另一种作品写法，值记录为true的dp，先dp[0]&#x3D;0，再遍历i，如果dp[i]&#x3D;true，即说明i之前的都在字典中可以匹配，再考虑i之后的与字典前缀匹配( s.startsWith(wordDict, i) )，如果匹配上了则记录dp[i+word.length]为true。最后返回最后一个dp即可</p>
+</blockquote>
+<h1 id="141-环形链表"><a href="#141-环形链表" class="headerlink" title="141. 环形链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle/">141. 环形链表</a></h1><blockquote>
+<p>快慢指针，快指针一次走两步，慢指针一次走一步，如果存在环，则二指针一定会相遇</p>
+</blockquote>
+<h1 id="142-环形链表-II"><a href="#142-环形链表-II" class="headerlink" title="142. 环形链表 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">142. 环形链表 II</a></h1><blockquote>
+<p>同上，先找到相遇点，相遇点到入环点的距离与head到入环点的距离相等，只需在快慢指针相遇时res指针指向头部，然后res和slow指针一起移动，二者相遇的地方就是入环点。</p>
+</blockquote>
+<h1 id="146-LRU-缓存"><a href="#146-LRU-缓存" class="headerlink" title="146. LRU 缓存"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/lru-cache/">146. LRU 缓存</a></h1><blockquote>
+<p>使用hashmap和双向链表完成</p>
+</blockquote>
+<p>&#x3D;&#x3D;注意可以设置首尾两个虚拟节点来避免边界问题&#x3D;&#x3D;</p>
+<h1 id="207-课程表"><a href="#207-课程表" class="headerlink" title="207. 课程表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/course-schedule/">207. 课程表</a></h1><blockquote>
+<p>本质上是判断图中是否有环（有向无环图）</p>
+<p>拓扑排序</p>
+<p>入度表（BFS）：先构建入度表和邻接表，记录每个节点的入度和该节点下一步能到达的节点，入度为0的进入队列，依次弹出，弹出的节点相当于删去了，因此节点的每一个邻接节点的入度都要减去1，如果减1后的入度为0，则继续入队，直到队列为空即为遍历完毕。</p>
+<p>DFS：设置一个flag标志数组，0是没有被遍历过的情况，如果被当前节点遍历则设置为1，如果是被其他节点遍历过设置为0</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//DFS</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">dfs</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; adjacency, <span class="type">int</span>[] flags, <span class="type">int</span> i)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(flags[i] == <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(flags[i] == -<span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    flags[i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> tmp : adjacency.get(i))&#123;</span><br><span class="line">        <span class="keyword">if</span>(!dfs(adjacency, flags, tmp))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    flags[i] = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="208-实现-Trie-前缀树"><a href="#208-实现-Trie-前缀树" class="headerlink" title="208. 实现 Trie (前缀树)"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-trie-prefix-tree/">208. 实现 Trie (前缀树)</a></h1><ul>
+<li>节点结构</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Trie</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> isEnd; <span class="comment">//记录是否是末尾</span></span><br><span class="line">    Trie[] next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Trie</span><span class="params">()</span> &#123;</span><br><span class="line">        isEnd = <span class="literal">false</span>;</span><br><span class="line">        next = <span class="keyword">new</span> <span class="title class_">Trie</span>[<span class="number">26</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="234-回文链表"><a href="#234-回文链表" class="headerlink" title="234. 回文链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/palindrome-linked-list/">234. 回文链表</a></h1><blockquote>
+<p>法一：遍历一遍放到数组里面，首尾双指针比较</p>
+<p>法二：使用递归，首先全局记录一个头指针，然后递归到链表尾部，在递归回退的时候是从链表尾部向中部回退，此时同时把全局头指针向后移动并与递归的比较</p>
+<p>法三：使用快慢指针，快指针一次走两步，慢指针一次走一步，当快指针到尾部时慢指针刚好到中间，在快慢指针前进的过程中同时使用两个指针把前半段链表翻转，最后从中间向两边遍历比较即可得到答案</p>
+</blockquote>
+<p>递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> ListNode front;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isPalindrome</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        front = head;</span><br><span class="line">        <span class="keyword">return</span> check(head);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">check</span><span class="params">(ListNode cur)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cur != <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!check(cur.next))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(front.val != cur.val)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            front = front.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="240-搜索二维矩阵-II"><a href="#240-搜索二维矩阵-II" class="headerlink" title="240. 搜索二维矩阵 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-a-2d-matrix-ii/">240. 搜索二维矩阵 II</a></h1><blockquote>
+<p>法一：直接暴力</p>
+<p>法二：每一行二分法（如果行末元素小于target则直接跳过该行）</p>
+<p>法三：从右上角开始遍历，小于就往左走，大于往下走，相等就返回true（类似于二分查找树）</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://Gnawix.github.io">xiwang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://gnawix.github.io/2022/05/TOP100/">http://gnawix.github.io/2022/05/TOP100/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://Gnawix.github.io" target="_blank">xiwang's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%88%B7%E9%A2%98/">刷题</a><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a><a class="post-meta__tags" href="/tags/Leetcode/">Leetcode</a></div><div class="post_share"><div class="social-share" data-image="https://ftp.bmp.ovh/imgs/2020/07/a0f475a397aa9f54.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97-%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8/"><img class="prev-cover" src="https://s3.bmp.ovh/imgs/2022/01/dc03c3e533447b74.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">表达式计算-简单计算器</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/%E4%BA%8C%E5%8F%89%E6%A0%91/"><img class="next-cover" src="https://i.bmp.ovh/imgs/2022/02/a111069892ac805e.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">二叉树的遍历</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/%E4%BA%8C%E5%8F%89%E6%A0%91/" title="二叉树的遍历"><img class="cover" src="https://i.bmp.ovh/imgs/2022/02/a111069892ac805e.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-08</div><div class="title">二叉树的遍历</div></div></a></div><div><a href="/2022/05/%E6%8E%92%E5%BA%8F/" title="排序算法"><img class="cover" src="https://i.bmp.ovh/imgs/2022/01/6fa0e61fc567cd7f.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-08</div><div class="title">排序算法</div></div></a></div><div><a href="/2022/05/%E6%95%B0%E7%BB%84/" title="数组有关"><img class="cover" src="https://ftp.bmp.ovh/imgs/2020/09/85db119024210f4f.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-08</div><div class="title">数组有关</div></div></a></div><div><a href="/2022/05/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97-%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8/" title="表达式计算-简单计算器"><img class="cover" src="https://s3.bmp.ovh/imgs/2022/01/dc03c3e533447b74.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-09</div><div class="title">表达式计算-简单计算器</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s3.bmp.ovh/imgs/2022/05/07/4f4a788382201409.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">xiwang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Gnawix"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Gnawix" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xiwang566@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">1.</span> <span class="toc-text">1. 两数之和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0"><span class="toc-number">2.</span> <span class="toc-text">2. 两数相加</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2"><span class="toc-number">3.</span> <span class="toc-text">3. 无重复字符的最长子串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">4. 寻找两个正序数组的中位数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2"><span class="toc-number">5.</span> <span class="toc-text">5. 最长回文子串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="toc-number">6.</span> <span class="toc-text">10. 正则表达式匹配</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">11. 盛最多水的容器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">8.</span> <span class="toc-text">15. 三数之和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#17-%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88"><span class="toc-number">9.</span> <span class="toc-text">17. 电话号码的字母组合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%AC-N-%E4%B8%AA%E7%BB%93%E7%82%B9"><span class="toc-number">10.</span> <span class="toc-text">19. 删除链表的倒数第 N 个结点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7"><span class="toc-number">11.</span> <span class="toc-text">20. 有效的括号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#21-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8"><span class="toc-number">12.</span> <span class="toc-text">21. 合并两个有序链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#22-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90"><span class="toc-number">13.</span> <span class="toc-text">22. 括号生成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#23-%E5%90%88%E5%B9%B6K%E4%B8%AA%E5%8D%87%E5%BA%8F%E9%93%BE%E8%A1%A8"><span class="toc-number">14.</span> <span class="toc-text">23. 合并K个升序链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#31-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97"><span class="toc-number">15.</span> <span class="toc-text">31. 下一个排列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#32-%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7"><span class="toc-number">16.</span> <span class="toc-text">32. 最长有效括号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#33-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="toc-number">17.</span> <span class="toc-text">33. 搜索旋转排序数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#34-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE"><span class="toc-number">18.</span> <span class="toc-text">34. 在排序数组中查找元素的第一个和最后一个位置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C"><span class="toc-number">19.</span> <span class="toc-text">39. 组合总和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#42-%E6%8E%A5%E9%9B%A8%E6%B0%B4"><span class="toc-number">20.</span> <span class="toc-text">42. 接雨水</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#46-%E5%85%A8%E6%8E%92%E5%88%97"><span class="toc-number">21.</span> <span class="toc-text">46. 全排列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#48-%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F"><span class="toc-number">22.</span> <span class="toc-text">48. 旋转图像</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#49-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84"><span class="toc-number">23.</span> <span class="toc-text">49. 字母异位词分组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#53-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C"><span class="toc-number">24.</span> <span class="toc-text">53. 最大子数组和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#55-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F"><span class="toc-number">25.</span> <span class="toc-text">55. 跳跃游戏</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#56-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4"><span class="toc-number">26.</span> <span class="toc-text">56. 合并区间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#62-%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84"><span class="toc-number">27.</span> <span class="toc-text">62. 不同路径</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#64-%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C"><span class="toc-number">28.</span> <span class="toc-text">64. 最小路径和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#70-%E7%88%AC%E6%A5%BC%E6%A2%AF"><span class="toc-number">29.</span> <span class="toc-text">70. 爬楼梯</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#72-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB"><span class="toc-number">30.</span> <span class="toc-text">72. 编辑距离</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#75-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB"><span class="toc-number">31.</span> <span class="toc-text">75. 颜色分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#76-%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2"><span class="toc-number">32.</span> <span class="toc-text">76. 最小覆盖子串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#78-%E5%AD%90%E9%9B%86"><span class="toc-number">33.</span> <span class="toc-text">78. 子集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#79-%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2"><span class="toc-number">34.</span> <span class="toc-text">79. 单词搜索</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#84-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2"><span class="toc-number">35.</span> <span class="toc-text">84. 柱状图中最大的矩形</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#94-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">36.</span> <span class="toc-text">94. 二叉树的中序遍历</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#96-%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">37.</span> <span class="toc-text">96. 不同的二叉搜索树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#98-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">38.</span> <span class="toc-text">98. 验证二叉搜索树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">39.</span> <span class="toc-text">101. 对称二叉树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#102-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">40.</span> <span class="toc-text">102. 二叉树的层序遍历</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6"><span class="toc-number">41.</span> <span class="toc-text">104. 二叉树的最大深度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">42.</span> <span class="toc-text">105. 从前序与中序遍历序列构造二叉树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#114-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8"><span class="toc-number">43.</span> <span class="toc-text">114. 二叉树展开为链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA"><span class="toc-number">44.</span> <span class="toc-text">121. 买卖股票的最佳时机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#124-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C"><span class="toc-number">45.</span> <span class="toc-text">124. 二叉树中的最大路径和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#128-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97"><span class="toc-number">46.</span> <span class="toc-text">128. 最长连续序列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#136-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97"><span class="toc-number">47.</span> <span class="toc-text">136. 只出现一次的数字</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#139-%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86"><span class="toc-number">48.</span> <span class="toc-text">139. 单词拆分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8"><span class="toc-number">49.</span> <span class="toc-text">141. 环形链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8-II"><span class="toc-number">50.</span> <span class="toc-text">142. 环形链表 II</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#146-LRU-%E7%BC%93%E5%AD%98"><span class="toc-number">51.</span> <span class="toc-text">146. LRU 缓存</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#207-%E8%AF%BE%E7%A8%8B%E8%A1%A8"><span class="toc-number">52.</span> <span class="toc-text">207. 课程表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#208-%E5%AE%9E%E7%8E%B0-Trie-%E5%89%8D%E7%BC%80%E6%A0%91"><span class="toc-number">53.</span> <span class="toc-text">208. 实现 Trie (前缀树)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#234-%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8"><span class="toc-number">54.</span> <span class="toc-text">234. 回文链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#240-%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5-II"><span class="toc-number">55.</span> <span class="toc-text">240. 搜索二维矩阵 II</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/Spring/" title="Spring 部分八股"><img src="https://ftp.bmp.ovh/imgs/2020/07/a0f475a397aa9f54.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring 部分八股"/></a><div class="content"><a class="title" href="/2022/07/Spring/" title="Spring 部分八股">Spring 部分八股</a><time datetime="2022-07-12T11:22:46.000Z" title="发表于 2022-07-12 11:22:46">2022-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/%E6%9C%80%E5%B0%8F%E6%A0%88/" title="最小栈"><img src="https://s3.bmp.ovh/imgs/2022/01/dc03c3e533447b74.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="最小栈"/></a><div class="content"><a class="title" href="/2022/05/%E6%9C%80%E5%B0%8F%E6%A0%88/" title="最小栈">最小栈</a><time datetime="2022-05-28T19:09:01.000Z" title="发表于 2022-05-28 19:09:01">2022-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/xdb%E6%89%8B%E5%86%99%E6%95%B0%E6%8D%AE%E5%BA%93/" title="xdb手写数据库"><img src="https://s3.bmp.ovh/imgs/2022/01/dc03c3e533447b74.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="xdb手写数据库"/></a><div class="content"><a class="title" href="/2022/05/xdb%E6%89%8B%E5%86%99%E6%95%B0%E6%8D%AE%E5%BA%93/" title="xdb手写数据库">xdb手写数据库</a><time datetime="2022-05-09T21:17:43.000Z" title="发表于 2022-05-09 21:17:43">2022-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97-%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8/" title="表达式计算-简单计算器"><img src="https://s3.bmp.ovh/imgs/2022/01/dc03c3e533447b74.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="表达式计算-简单计算器"/></a><div class="content"><a class="title" href="/2022/05/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97-%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8/" title="表达式计算-简单计算器">表达式计算-简单计算器</a><time datetime="2022-05-09T18:00:41.000Z" title="发表于 2022-05-09 18:00:41">2022-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/TOP100/" title="Leetcode HOT 100"><img src="https://ftp.bmp.ovh/imgs/2020/07/a0f475a397aa9f54.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode HOT 100"/></a><div class="content"><a class="title" href="/2022/05/TOP100/" title="Leetcode HOT 100">Leetcode HOT 100</a><time datetime="2022-05-08T22:39:25.000Z" title="发表于 2022-05-08 22:39:25">2022-05-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By xiwang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><p id="hitokoto" align="center" style="color:white"><a href="#" id="hitokoto_text">隐约雷鸣 阴霾天空 但盼风雨来 能留你在此</a></p> <script src="https://v1.hitokoto.cn/?c=j&encode=js&select=%23hitokoto" defer> </script></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
